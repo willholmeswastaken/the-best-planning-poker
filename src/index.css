@@ -29,3 +29,10 @@ code {
 .btn-white {
   @apply bg-tbpp-white;
 }
+
+.toggle-checkbox:checked {
+  @apply right-0 border-tbpp-purple;
+}
+.toggle-checkbox:checked + .toggle-label {
+  @apply bg-tbpp-purple
+}
