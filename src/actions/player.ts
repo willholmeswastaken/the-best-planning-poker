@@ -1,0 +1,1 @@
+export type PlayerAction = { type: "ADD_VOTE_ACTION", payload: string };

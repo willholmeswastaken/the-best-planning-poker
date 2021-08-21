@@ -1,7 +1,7 @@
 import { IPlayer } from "./IPlayer";
 
 export interface IAppState {
-    currentPlayer?: IPlayer;
+    currentPlayer: IPlayer;
     currentRoomId?: string;
     currentRoom?: IRoom;
 }

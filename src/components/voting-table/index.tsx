@@ -17,7 +17,12 @@ export const VotingTable = (props: VotingTableProps) => {
 
                 </div>
                 <div>
-                    <VotingTablePlayer vote="1" name="Will" isLeader={true} />
+                    {
+                        props.participants &&
+                        props.participants.map(player => (
+                            <VotingTablePlayer key={player.name} vote={player.currentVoteValue} name={player.name} isLeader={player.isLeader} />
+                        ))
+                    }
                 </div>
             </div>
         </div>
