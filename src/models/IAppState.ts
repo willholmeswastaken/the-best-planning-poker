@@ -1,7 +1,7 @@
-import { IRoomAttendee } from "./IRoomAttendee";
+import { IPlayer } from "./IPlayer";
 
 export interface IAppState {
-    displayName: string;
+    currentPlayer?: IPlayer;
     currentRoomId?: string;
     currentRoom?: IRoom;
 }
@@ -9,7 +9,7 @@ export interface IAppState {
 export interface IRoom {
     id: string;
     name: string;
-    attendees: Array<IRoomAttendee>;
+    players: Array<IPlayer>;
     currentTopic: string;
     isLeaderOnlyAllowedToShow: boolean;
 }

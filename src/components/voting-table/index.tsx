@@ -1,9 +1,9 @@
 import React from 'react'
-import { IRoomAttendee } from '../../models/IRoomAttendee'
+import { IPlayer } from '../../models/IPlayer'
 import { VotingTablePlayer } from '../voting-table-player'
 
 interface VotingTableProps {
-    participants?: Array<IRoomAttendee>;
+    participants?: Array<IPlayer>;
 }
 
 export const VotingTable = (props: VotingTableProps) => {

@@ -1,4 +1,4 @@
-export interface IRoomAttendee {
+export interface IPlayer {
     id: string;
     name: string;
     isLeader: boolean;
