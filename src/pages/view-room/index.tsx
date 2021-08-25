@@ -5,6 +5,7 @@ import { VotingCard } from '../../components/voting-card'
 import { VotingTable } from '../../components/voting-table'
 import { IAppState } from '../../models/IAppState'
 import { IPlayer } from '../../models/IPlayer'
+import { IRoom } from '../../models/IRoom'
 
 interface Props {
 
@@ -12,11 +13,12 @@ interface Props {
 
 export const ViewRoomPage = (props: Props) => {
     let currentPlayer : IPlayer = useSelector<IAppState, IPlayer>((state) => state.currentPlayer);
+    let currentRoom: IRoom = useSelector<IAppState, IRoom>((state) => state.currentRoom);
     let players: Array<IPlayer> = [ currentPlayer ];
-
     return (
         <div className="flex flex-col min-h-screen">
             <Header />
+            <h1 className="text-center">{currentRoom.name}</h1>
             <div className="flex flex-grow items-center justify-center">
                 <div className="flex flex-col">
                     <p className="text-sm text-center mb-10">Invite players!</p>

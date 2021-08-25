@@ -2,6 +2,11 @@ import React from 'react'
 import { Field, Form, Formik } from 'formik'
 import { useHistory } from 'react-router';
 import { Header } from '../../components/header';
+import { useDispatch } from 'react-redux';
+import { IPlayer } from '../../models/IPlayer';
+import { IRoom } from '../../models/IRoom';
+import { addPlayer } from '../../actions/player';
+import { addRoom } from '../../actions/room';
 
 interface FormValues {
     roomName: string;
@@ -12,6 +17,7 @@ interface FormValues {
 export const CreateRoomPage = () => {
     const initialValues: FormValues = { roomName: '', displayName: '', isLeaderOnlyAllowedToShowCards: true };
     const history = useHistory();
+    const dispatch = useDispatch();
     return (
         <div>
             <Header />
@@ -21,8 +27,23 @@ export const CreateRoomPage = () => {
                         <h1 className="mb-8 text-3xl text-center">New Voting Room 🚀</h1>
                         <Formik
                             initialValues={initialValues}
-                            onSubmit={async (values) => {
-                                alert(JSON.stringify(values, null, 2));
+                            onSubmit={async (values: FormValues) => {
+                                let player: IPlayer = {
+                                    id: 'test',
+                                    name: values.displayName,
+                                    isLeader: true,
+                                    isSpectator: false,
+                                    currentVoteValue: ''
+                                };
+                                let room: IRoom = {
+                                    id: 'test',
+                                    name: values.roomName,
+                                    isLeaderOnlyAllowedToShow: values.isLeaderOnlyAllowedToShowCards,
+                                    currentTopic: '',
+                                    players: [ player ]
+                                };
+                                dispatch(addRoom(room));
+                                dispatch(addPlayer(player))
                                 history.push('/view-room');
                             }}>
                             <Form>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { addVote } from '../../actions/vote';
+import { addVote } from '../../actions/player';
 
 interface VotingCardProps {
     value: string;

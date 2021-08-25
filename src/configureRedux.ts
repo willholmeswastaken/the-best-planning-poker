@@ -1,8 +1,11 @@
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'
-import { combineReducers, createStore } from 'redux';
+import { combineReducers } from 'redux';
 import { IAppState } from './models/IAppState';
 import { playerReducer } from './reducers/playerReducer';
+import { configureStore } from '@reduxjs/toolkit';
+import thunk from 'redux-thunk';
+import { roomReducer } from './reducers/roomReducer';
 
 const config = {
     key: 'root',
@@ -11,9 +14,16 @@ const config = {
 };
 
 const rootReducer = combineReducers<IAppState>({
-    currentPlayer: playerReducer
+    currentPlayer: playerReducer,
+    currentRoom: roomReducer
 });
 
 const persisted = persistReducer(config, rootReducer);
 
-export default createStore(persisted);
+const store = configureStore({
+    reducer: persisted,
+    devTools: process.env.NODE_ENV !== 'production',
+    middleware: [thunk]
+});
+
+export default store;

@@ -1,0 +1,1 @@
+export type DispatchAction<Type> = { type: string, payload: Type };
